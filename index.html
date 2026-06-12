@@ -6,16 +6,16 @@
   <title>StayPilot Host HQ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Calistoga&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Calistoga&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <aside class="sidebar">
     <div class="brand">
-      <div class="brand-mark">#</div>
+      <div class="brand-mark">S</div>
       <div>
         <div class="brand-name">StayPilot</div>
-        <div class="brand-sub">STR ops center</div>
+        <div class="brand-sub">STR operating system</div>
       </div>
     </div>
     <nav>
@@ -29,167 +29,92 @@
     <div class="side-card">
       <b>Portfolio pulse</b>
       <span>9 units across 3 markets</span>
-      <span>91% T90 rented days</span>
+      <span>86% occupancy this month</span>
+      <span>$58.4k MTD revenue</span>
     </div>
   </aside>
 
   <main>
     <section id="command" class="page active">
       <div class="topline">StayPilot keeps every channel, stay and property moving from one operating hub.</div>
-      <header class="hero">
+      <header class="hero compact">
+        <p class="kicker">Command Center</p>
         <h1>Host HQ</h1>
-        <p>Revenue, guests, properties, tickets, renter conversations and lead flow in one clean operating view.</p>
+        <p>Run the portfolio, guest experience, lead flow and operating risks from one clean control room.</p>
       </header>
 
-      <section class="metric-bar">
-        <div class="metric">
-          <b>18 upcoming stays</b>
-          <span>$42,850 booked revenue next 30 days</span>
+      <section class="metric-bar six">
+        <div class="metric"><span>Occupancy</span><b>86%</b><small>Across active units</small></div>
+        <div class="metric"><span>Revenue MTD</span><b>$58.4k</b><small>+14% MoM</small></div>
+        <div class="metric"><span>Revenue TTM</span><b>$642k</b><small>9-unit portfolio</small></div>
+        <div class="metric"><span>Current Guests</span><b>7</b><small>Next move-out Jun 14</small></div>
+        <div class="metric"><span>Upcoming Arrivals</span><b>12</b><small>Next 7 days</small></div>
+        <div class="metric"><span>Open Ops</span><b>16</b><small>5 tickets · 11 unread</small></div>
+      </section>
+
+      <section class="ops-grid">
+        <div class="ops-card wide">
+          <div class="card-head"><h2>Today’s Operating Priorities</h2><button class="ghost">View all</button></div>
+          <div id="priorityList"></div>
         </div>
-        <div class="metric">
-          <b>7 current guests</b>
-          <span>Move-outs: Jun 14, Jun 16, Jun 20</span>
+        <div class="ops-card">
+          <h2>Revenue by Property</h2>
+          <div id="miniRevenue"></div>
         </div>
-        <div class="metric">
-          <b>4.82 guest rating avg</b>
-          <span>Recent: 5.0, 4.8, 4.7, 5.0</span>
+        <div class="ops-card">
+          <h2>Risk Monitor</h2>
+          <div class="risk high"><b>2</b><span>guest issues need response</span></div>
+          <div class="risk med"><b>3</b><span>stays departing within 48h</span></div>
+          <div class="risk low"><b>1</b><span>property below rating target</span></div>
         </div>
       </section>
 
       <section class="module-grid">
-        <button class="module" data-page="comms">
-          <span>Comms</span>
-          <small>11 unread messages · 23 active leads</small>
-        </button>
-        <button class="module" data-page="maintenance">
-          <span>Maintenance</span>
-          <small>5 open tickets</small>
-        </button>
-        <button class="module" data-page="properties">
-          <span>Properties</span>
-          <small>Portfolio health</small>
-        </button>
-        <button class="module" data-page="stays">
-          <span>Stays</span>
-          <small>Pipeline by renter status</small>
-        </button>
+        <button class="module" data-page="comms"><span>Comms</span><small>Guest inbox + lead attribution</small></button>
+        <button class="module" data-page="maintenance"><span>Maintenance</span><small>Tickets, status and owner</small></button>
+        <button class="module" data-page="properties"><span>Properties</span><small>Property operating table</small></button>
+        <button class="module" data-page="stays"><span>Stays</span><small>Active, upcoming and completed</small></button>
       </section>
     </section>
 
     <section id="comms" class="page">
-      <div class="section-head">
-        <h2>Comms</h2>
-        <p>Manage renter conversations and lead gen across Facebook groups, Zillow, HotPads and Airbnb.</p>
-      </div>
-
-      <div class="comms-tabs">
-        <button class="tab active" data-comms-tab="messagesPanel">Guest messages</button>
-        <button class="tab" data-comms-tab="leadPanel">Lead gen management</button>
-      </div>
-
+      <div class="section-head"><h2>Comms</h2><p>Unified guest inbox plus lead gen management across every acquisition channel.</p></div>
+      <div class="comms-tabs"><button class="tab active" data-comms-tab="messagesPanel">Guest messages</button><button class="tab" data-comms-tab="leadPanel">Lead gen management</button></div>
       <div id="messagesPanel" class="comms-panel active-panel">
-        <div class="two-col">
-          <div class="list-card" id="messageList"></div>
-          <div class="reply-card">
-            <h3 id="replyName">Select a renter</h3>
-            <p id="replySummary">Choose a message thread from the left.</p>
-            <textarea placeholder="Write a response...">Hi Ava, yes, early check-in at 1:00 PM is available. I’ll send the updated access details now.</textarea>
-            <button class="primary">Send response</button>
-          </div>
-        </div>
+        <div class="two-col"><div class="list-card" id="messageList"></div><div class="reply-card"><h3 id="replyName">Select a renter</h3><p id="replySummary">Choose a message thread from the left.</p><textarea placeholder="Write a response...">Hi Ava, yes, early check-in at 1:00 PM is available. I’ll send the updated access details now.</textarea><button class="primary">Send response</button></div></div>
       </div>
-
       <div id="leadPanel" class="comms-panel">
-        <div class="lead-summary">
-          <div class="report"><span>Total leads</span><b>23</b><small>Last 14 days</small></div>
-          <div class="report"><span>Top channel</span><b>Airbnb</b><small>9 new leads</small></div>
-          <div class="report"><span>Pipeline value</span><b>$31.7k</b><small>Potential booked revenue</small></div>
-          <div class="report"><span>Needs follow-up</span><b>6</b><small>Today</small></div>
-        </div>
-        <div class="lead-tools">
-          <button class="primary">Add lead</button>
-          <button class="ghost">Import channel leads</button>
-          <button class="ghost">Filter by source</button>
-        </div>
-        <div class="lead-board">
-          <div class="lead-lane">
-            <h3>New inquiry</h3>
-            <div id="newLeads"></div>
-          </div>
-          <div class="lead-lane">
-            <h3>Qualified</h3>
-            <div id="qualifiedLeads"></div>
-          </div>
-          <div class="lead-lane">
-            <h3>Follow-up</h3>
-            <div id="followupLeads"></div>
-          </div>
-          <div class="lead-lane booked">
-            <h3>Booked</h3>
-            <div id="bookedLeads"></div>
-          </div>
-        </div>
+        <div class="lead-summary"><div class="report"><span>Total leads</span><b>41</b><small>Last 30 days</small></div><div class="report"><span>Booked leads</span><b>12</b><small>29% conversion</small></div><div class="report"><span>Pipeline value</span><b>$48.9k</b><small>Potential booked revenue</small></div><div class="report"><span>Needs follow-up</span><b>8</b><small>Today</small></div></div>
+        <div class="lead-tools"><button class="primary">Add lead</button><button class="ghost">Import channel leads</button><button class="ghost">Filter by source</button></div>
+        <div class="lead-board"><div class="lead-lane"><h3>New</h3><div id="newLeads"></div></div><div class="lead-lane"><h3>Qualified</h3><div id="qualifiedLeads"></div></div><div class="lead-lane"><h3>Follow-up</h3><div id="followupLeads"></div></div><div class="lead-lane booked"><h3>Booked</h3><div id="bookedLeads"></div></div></div>
+        <div class="table-wrap"><table><thead><tr><th>Channel</th><th>Leads</th><th>Booked</th><th>Conversion</th><th>Revenue</th></tr></thead><tbody id="channelRows"></tbody></table></div>
       </div>
     </section>
 
     <section id="maintenance" class="page">
-      <div class="section-head">
-        <h2>Maintenance</h2>
-        <p>Tickets ranked by submission date, reporter and current operating status.</p>
-      </div>
-      <table>
-        <thead><tr><th>Ticket</th><th>Reported by</th><th>Date</th><th>Status</th></tr></thead>
-        <tbody id="ticketRows"></tbody>
-      </table>
+      <div class="section-head"><h2>Maintenance</h2><p>Tickets ranked by submission date, reporter, teammate owner and current operating status.</p></div>
+      <table><thead><tr><th>Ticket</th><th>Reported by</th><th>Owner</th><th>Date</th><th>Status</th></tr></thead><tbody id="ticketRows"></tbody></table>
     </section>
 
     <section id="properties" class="page">
-      <div class="section-head">
-        <h2>Properties</h2>
-        <p>House-level portfolio cards with Zillow links, value, T90 rented days and quick management actions.</p>
-      </div>
-      <div class="actions"><button class="primary">Add property</button><button class="ghost">Remove selected</button></div>
-      <div class="property-grid" id="propertyGrid"></div>
+      <div class="section-head"><h2>Properties</h2><p>Operators live in tables. Track occupancy, revenue, rating, open tickets and current guest by property.</p></div>
+      <div class="actions"><button class="primary">Add property</button><button class="ghost">Sync Zillow links</button><button class="ghost">Export portfolio</button></div>
+      <div class="table-wrap"><table><thead><tr><th>Property</th><th>Occupancy</th><th>Revenue MTD</th><th>Rating</th><th>Open Tickets</th><th>Current Guest</th><th>Zillow</th></tr></thead><tbody id="propertyRows"></tbody></table></div>
     </section>
 
     <section id="stays" class="page">
-      <div class="section-head">
-        <h2>Stays</h2>
-        <p>Pipeline view with current stays intentionally prominent. Click any card for richer stay detail.</p>
-      </div>
-      <div class="pipeline">
-        <div class="lane">
-          <h3>Upcoming stays</h3>
-          <div id="upcoming"></div>
-        </div>
-        <div class="lane current">
-          <h3>Current stays</h3>
-          <div id="current"></div>
-        </div>
-        <div class="lane">
-          <h3>Previous stays</h3>
-          <div id="previous"></div>
-        </div>
-      </div>
-      <div class="detail-panel" id="stayDetail">Click a stay to see renter names, dates, length of stay, unit rented, revenue, ratings and notes.</div>
+      <div class="section-head"><h2>Stays</h2><p>The core operating board: upcoming, active, departing today and completed stays.</p></div>
+      <div class="pipeline four"><div class="lane"><h3>Upcoming</h3><div id="upcoming"></div></div><div class="lane current"><h3>Active</h3><div id="current"></div></div><div class="lane warn"><h3>Departing Today</h3><div id="departing"></div></div><div class="lane"><h3>Completed</h3><div id="previous"></div></div></div>
+      <div class="detail-panel" id="stayDetail">Click a stay to see guest, property, check-in, check-out, revenue, status and notes.</div>
     </section>
 
     <section id="reporting" class="page">
-      <div class="section-head">
-        <h2>Reporting</h2>
-        <p>Snapshot operating reports for revenue, guest experience, occupancy and maintenance load.</p>
-      </div>
-      <div class="report-controls"><button class="primary">Last 30 days</button><button class="ghost">Export CSV</button></div>
-      <div class="report-grid">
-        <div class="report"><span>Revenue</span><b>$58.4k</b><small>+14% MoM</small></div>
-        <div class="report"><span>Occupancy</span><b>86%</b><small>Across active units</small></div>
-        <div class="report"><span>Avg Rating</span><b>4.82</b><small>42 recent reviews</small></div>
-        <div class="report"><span>Maintenance Cost</span><b>$3.2k</b><small>5.5% of revenue</small></div>
-        <div class="report"><span>Response Time</span><b>7 min</b><small>Median guest reply</small></div>
-      </div>
+      <div class="section-head"><h2>Reporting</h2><p>Revenue, occupancy, lead source conversion, guest ratings and maintenance cost trends.</p></div>
+      <div class="report-controls"><button class="primary">Last 30 days</button><button class="ghost">Quarter</button><button class="ghost">Export CSV</button></div>
+      <div class="report-grid"><div class="report"><span>Revenue</span><b>$58.4k</b><small>+14% MoM</small></div><div class="report"><span>Occupancy</span><b>86%</b><small>Across active units</small></div><div class="report"><span>Lead Conversion</span><b>29%</b><small>12 booked from 41</small></div><div class="report"><span>Avg Rating</span><b>4.82</b><small>42 recent reviews</small></div><div class="report"><span>Maintenance Cost</span><b>$3.2k</b><small>5.5% of revenue</small></div></div>
+      <div class="charts-grid"><div class="ops-card"><h2>Lead Source Conversion</h2><div id="leadChart"></div></div><div class="ops-card"><h2>Occupancy by Property</h2><div id="occupancyChart"></div></div><div class="ops-card"><h2>Maintenance Cost Trend</h2><div id="maintenanceChart"></div></div></div>
     </section>
   </main>
-
   <script src="app.js"></script>
 </body>
 </html>
