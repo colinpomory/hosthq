@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>StayPilot Command Center</title>
+  <title>StayPilot Host HQ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Calistoga&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -19,8 +19,8 @@
       </div>
     </div>
     <nav>
-      <button class="nav active" data-page="command">Command Center</button>
-      <button class="nav" data-page="comms">Guest Comms</button>
+      <button class="nav active" data-page="command">Host HQ</button>
+      <button class="nav" data-page="comms">Comms</button>
       <button class="nav" data-page="maintenance">Maintenance</button>
       <button class="nav" data-page="properties">Properties</button>
       <button class="nav" data-page="stays">Stays</button>
@@ -35,10 +35,10 @@
 
   <main>
     <section id="command" class="page active">
-      <div class="topline">Built for operators who want one place to run every stay.</div>
+      <div class="topline">StayPilot keeps every channel, stay and property moving from one operating hub.</div>
       <header class="hero">
-        <h1>Command Center</h1>
-        <p>Revenue, guests, properties, tickets and renter conversations in one clean operating view.</p>
+        <h1>Host HQ</h1>
+        <p>Revenue, guests, properties, tickets, renter conversations and lead flow in one clean operating view.</p>
       </header>
 
       <section class="metric-bar">
@@ -58,8 +58,8 @@
 
       <section class="module-grid">
         <button class="module" data-page="comms">
-          <span>Guest Comms</span>
-          <small>11 unread messages</small>
+          <span>Comms</span>
+          <small>11 unread messages · 23 active leads</small>
         </button>
         <button class="module" data-page="maintenance">
           <span>Maintenance</span>
@@ -78,16 +78,56 @@
 
     <section id="comms" class="page">
       <div class="section-head">
-        <h2>Guest Comms</h2>
-        <p>Most recent renter messages, with replies handled directly inside the interface.</p>
+        <h2>Comms</h2>
+        <p>Manage renter conversations and lead gen across Facebook groups, Zillow, HotPads and Airbnb.</p>
       </div>
-      <div class="two-col">
-        <div class="list-card" id="messageList"></div>
-        <div class="reply-card">
-          <h3 id="replyName">Select a renter</h3>
-          <p id="replySummary">Choose a message thread from the left.</p>
-          <textarea placeholder="Write a response...">Hi Ava, yes, early check-in at 1:00 PM is available. I’ll send the updated access details now.</textarea>
-          <button class="primary">Send response</button>
+
+      <div class="comms-tabs">
+        <button class="tab active" data-comms-tab="messagesPanel">Guest messages</button>
+        <button class="tab" data-comms-tab="leadPanel">Lead gen management</button>
+      </div>
+
+      <div id="messagesPanel" class="comms-panel active-panel">
+        <div class="two-col">
+          <div class="list-card" id="messageList"></div>
+          <div class="reply-card">
+            <h3 id="replyName">Select a renter</h3>
+            <p id="replySummary">Choose a message thread from the left.</p>
+            <textarea placeholder="Write a response...">Hi Ava, yes, early check-in at 1:00 PM is available. I’ll send the updated access details now.</textarea>
+            <button class="primary">Send response</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="leadPanel" class="comms-panel">
+        <div class="lead-summary">
+          <div class="report"><span>Total leads</span><b>23</b><small>Last 14 days</small></div>
+          <div class="report"><span>Top channel</span><b>Airbnb</b><small>9 new leads</small></div>
+          <div class="report"><span>Pipeline value</span><b>$31.7k</b><small>Potential booked revenue</small></div>
+          <div class="report"><span>Needs follow-up</span><b>6</b><small>Today</small></div>
+        </div>
+        <div class="lead-tools">
+          <button class="primary">Add lead</button>
+          <button class="ghost">Import channel leads</button>
+          <button class="ghost">Filter by source</button>
+        </div>
+        <div class="lead-board">
+          <div class="lead-lane">
+            <h3>New inquiry</h3>
+            <div id="newLeads"></div>
+          </div>
+          <div class="lead-lane">
+            <h3>Qualified</h3>
+            <div id="qualifiedLeads"></div>
+          </div>
+          <div class="lead-lane">
+            <h3>Follow-up</h3>
+            <div id="followupLeads"></div>
+          </div>
+          <div class="lead-lane booked">
+            <h3>Booked</h3>
+            <div id="bookedLeads"></div>
+          </div>
         </div>
       </div>
     </section>
