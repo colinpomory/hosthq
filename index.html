@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StayPilot Command Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Calistoga&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">#</div>
+      <div>
+        <div class="brand-name">StayPilot</div>
+        <div class="brand-sub">STR ops center</div>
+      </div>
+    </div>
+    <nav>
+      <button class="nav active" data-page="command">Command Center</button>
+      <button class="nav" data-page="comms">Guest Comms</button>
+      <button class="nav" data-page="maintenance">Maintenance</button>
+      <button class="nav" data-page="properties">Properties</button>
+      <button class="nav" data-page="stays">Stays</button>
+      <button class="nav" data-page="reporting">Reporting</button>
+    </nav>
+    <div class="side-card">
+      <b>Portfolio pulse</b>
+      <span>9 units across 3 markets</span>
+      <span>91% T90 rented days</span>
+    </div>
+  </aside>
+
+  <main>
+    <section id="command" class="page active">
+      <div class="topline">Built for operators who want one place to run every stay.</div>
+      <header class="hero">
+        <h1>Command Center</h1>
+        <p>Revenue, guests, properties, tickets and renter conversations in one clean operating view.</p>
+      </header>
+
+      <section class="metric-bar">
+        <div class="metric">
+          <b>18 upcoming stays</b>
+          <span>$42,850 booked revenue next 30 days</span>
+        </div>
+        <div class="metric">
+          <b>7 current guests</b>
+          <span>Move-outs: Jun 14, Jun 16, Jun 20</span>
+        </div>
+        <div class="metric">
+          <b>4.82 guest rating avg</b>
+          <span>Recent: 5.0, 4.8, 4.7, 5.0</span>
+        </div>
+      </section>
+
+      <section class="module-grid">
+        <button class="module" data-page="comms">
+          <span>Guest Comms</span>
+          <small>11 unread messages</small>
+        </button>
+        <button class="module" data-page="maintenance">
+          <span>Maintenance</span>
+          <small>5 open tickets</small>
+        </button>
+        <button class="module" data-page="properties">
+          <span>Properties</span>
+          <small>Portfolio health</small>
+        </button>
+        <button class="module" data-page="stays">
+          <span>Stays</span>
+          <small>Pipeline by renter status</small>
+        </button>
+      </section>
+    </section>
+
+    <section id="comms" class="page">
+      <div class="section-head">
+        <h2>Guest Comms</h2>
+        <p>Most recent renter messages, with replies handled directly inside the interface.</p>
+      </div>
+      <div class="two-col">
+        <div class="list-card" id="messageList"></div>
+        <div class="reply-card">
+          <h3 id="replyName">Select a renter</h3>
+          <p id="replySummary">Choose a message thread from the left.</p>
+          <textarea placeholder="Write a response...">Hi Ava, yes, early check-in at 1:00 PM is available. I’ll send the updated access details now.</textarea>
+          <button class="primary">Send response</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="maintenance" class="page">
+      <div class="section-head">
+        <h2>Maintenance</h2>
+        <p>Tickets ranked by submission date, reporter and current operating status.</p>
+      </div>
+      <table>
+        <thead><tr><th>Ticket</th><th>Reported by</th><th>Date</th><th>Status</th></tr></thead>
+        <tbody id="ticketRows"></tbody>
+      </table>
+    </section>
+
+    <section id="properties" class="page">
+      <div class="section-head">
+        <h2>Properties</h2>
+        <p>House-level portfolio cards with Zillow links, value, T90 rented days and quick management actions.</p>
+      </div>
+      <div class="actions"><button class="primary">Add property</button><button class="ghost">Remove selected</button></div>
+      <div class="property-grid" id="propertyGrid"></div>
+    </section>
+
+    <section id="stays" class="page">
+      <div class="section-head">
+        <h2>Stays</h2>
+        <p>Pipeline view with current stays intentionally prominent. Click any card for richer stay detail.</p>
+      </div>
+      <div class="pipeline">
+        <div class="lane">
+          <h3>Upcoming stays</h3>
+          <div id="upcoming"></div>
+        </div>
+        <div class="lane current">
+          <h3>Current stays</h3>
+          <div id="current"></div>
+        </div>
+        <div class="lane">
+          <h3>Previous stays</h3>
+          <div id="previous"></div>
+        </div>
+      </div>
+      <div class="detail-panel" id="stayDetail">Click a stay to see renter names, dates, length of stay, unit rented, revenue, ratings and notes.</div>
+    </section>
+
+    <section id="reporting" class="page">
+      <div class="section-head">
+        <h2>Reporting</h2>
+        <p>Snapshot operating reports for revenue, guest experience, occupancy and maintenance load.</p>
+      </div>
+      <div class="report-controls"><button class="primary">Last 30 days</button><button class="ghost">Export CSV</button></div>
+      <div class="report-grid">
+        <div class="report"><span>Revenue</span><b>$58.4k</b><small>+14% MoM</small></div>
+        <div class="report"><span>Occupancy</span><b>86%</b><small>Across active units</small></div>
+        <div class="report"><span>Avg Rating</span><b>4.82</b><small>42 recent reviews</small></div>
+        <div class="report"><span>Maintenance Cost</span><b>$3.2k</b><small>5.5% of revenue</small></div>
+        <div class="report"><span>Response Time</span><b>7 min</b><small>Median guest reply</small></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
